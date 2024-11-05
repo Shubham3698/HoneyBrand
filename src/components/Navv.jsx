@@ -38,7 +38,7 @@ function Navv() {
           aria-labelledby="offcanvasNavbarLabel"
           placement="start"
         >
-          <Offcanvas.Header closeButton>
+          <Offcanvas.Header closeButton className="close-btn-left">
             <Offcanvas.Title id="offcanvasNavbarLabel">Menu</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
