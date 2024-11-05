@@ -1,1 +1,6 @@
 
+/* App.css */
+.close-btn-left .btn-close {
+  margin-right: auto;
+  margin-left: 0; /* Move it fully to the left */
+}

@@ -1,27 +1,41 @@
 // Navv.js
-import React, { useContext } from 'react';
-import { Navbar, Nav, Container, Form, FormControl, Button, Badge, Offcanvas } from 'react-bootstrap';
-import { FaUser, FaShoppingCart } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Navbar, Nav, Container, Badge, Offcanvas } from 'react-bootstrap';
+import { FaUser, FaShoppingCart, FaSearch } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from './../assets/Logo.webp';
 import { CartContext } from './../Context/CartContext';
 
 function Navv() {
   const { cartCount } = useContext(CartContext);
+  const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const handleMenuClick = (path) => {
+    navigate(path); // Navigate to the clicked link
+    handleClose(); // Close the Offcanvas menu
+  };
 
   return (
     <Navbar
-      bg="dark"
       variant="dark"
       expand="lg"
       fixed="top"
       style={{
         width: '100%',
         zIndex: 1000,
+        background:'red'
       }}
     >
-      <Container>
-        <Navbar.Brand as={Link} to="/">
+      <Container fluid className="d-flex align-items-center">
+        {/* Toggle button aligned to the left on mobile */}
+        <Navbar.Toggle aria-controls="offcanvasNavbar" className="me-2 order-1 order-lg-0" onClick={handleShow} />
+
+        {/* Logo positioned next to the toggle button */}
+        <Navbar.Brand as={Link} to="/" className="order-2 order-lg-1">
           <img
             src={logo}
             alt="MyBrand Logo"
@@ -30,51 +44,43 @@ function Navv() {
             className="d-inline-block align-top"
           />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="offcanvasNavbar" />
-        
+
+        {/* Icons: Search, Account, and Cart positioned to the right on mobile */}
+        <div className="d-flex align-items-center ms-auto order-3">
+          {/* Search Icon */}
+          {/* Account and Cart Icons */}
+          <Nav.Link as={Link} to="/Account" className="d-flex align-items-center me-3">
+            <FaUser style={{ fontSize: '1.2rem' }} />
+          </Nav.Link>
+          <Nav.Link as={Link} to="/Cart" className="d-flex align-items-center">
+            <FaShoppingCart style={{ fontSize: '1.2rem' }} />
+            {cartCount > 0 && (
+              <Badge bg="danger" pill style={{ marginLeft: '5px' }}>
+                {cartCount}
+              </Badge>
+            )}
+          </Nav.Link>
+        </div>
+
         {/* Offcanvas for Sidebar */}
         <Navbar.Offcanvas
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel"
           placement="start"
+          style={{ width: '60%' }} // Set width to 60%
+          show={show} // Control visibility
+          onHide={handleClose} // Close when clicking outside
         >
-          <Offcanvas.Header closeButton className="close-btn-left">
+          <Offcanvas.Header closeButton>
             <Offcanvas.Title id="offcanvasNavbarLabel">Menu</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link as={Link} to="/Our-Products">Our products</Nav.Link>
-              <Nav.Link as={Link} to="/Our-Story">Our story</Nav.Link>
-              <Nav.Link as={Link} to="/Contact">Contact</Nav.Link>
-              <Nav.Link as={Link} to="/Track-order">Track order</Nav.Link>
-            </Nav>
-
-            {/* Search bar with a button */}
-            <Form className="d-flex me-3">
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
-
-            {/* Account and Cart Icons */}
-            <Nav>
-              <Nav.Link as={Link} to="/Account" className="d-flex align-items-center">
-                <FaUser style={{ marginRight: '5px' }} /> Account
-              </Nav.Link>
-              <Nav.Link as={Link} to="/Cart" className="d-flex align-items-center">
-                <FaShoppingCart style={{ marginRight: '5px' }} />
-                Cart
-                {cartCount > 0 && (
-                  <Badge bg="danger" pill style={{ marginLeft: '5px' }}>
-                    {cartCount}
-                  </Badge>
-                )}
-              </Nav.Link>
+              <Nav.Link onClick={() => handleMenuClick("/")}>Home</Nav.Link>
+              <Nav.Link onClick={() => handleMenuClick("/Our-Products")}>Our products</Nav.Link>
+              <Nav.Link onClick={() => handleMenuClick("/Our-Story")}>Our story</Nav.Link>
+              <Nav.Link onClick={() => handleMenuClick("/Contact")}>Contact</Nav.Link>
+              <Nav.Link onClick={() => handleMenuClick("/Track-order")}>Track order</Nav.Link>
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
@@ -84,3 +90,4 @@ function Navv() {
 }
 
 export default Navv;
+
