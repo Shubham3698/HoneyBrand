@@ -4,7 +4,7 @@ import { Card, Button } from 'react-bootstrap';
 import { FaStar } from 'react-icons/fa';
 import { CartContext } from './../Context/CartContext';
 
-import leg from './leg.gif';
+import leg from './../assets/leg.gif';
 
 function ProductCard() {
   const { addToCart } = useContext(CartContext);

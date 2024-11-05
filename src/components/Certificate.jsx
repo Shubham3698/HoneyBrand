@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import fasi from './fasi.webp'
+import fasi from './../assets/fasi.webp'
 
 function Certification() {
   return (

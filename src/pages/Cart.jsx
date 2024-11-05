@@ -2,9 +2,10 @@
 import React, { useContext } from 'react';
 import { CartContext } from './../Context/CartContext';
 import { Button, Image } from 'react-bootstrap';
+import Footer from '../components/Footer';
 
 function Cart() {
-  const { cartItems, updateQuantity } = useContext(CartContext);
+  const { cartItems, updateQuantity, removeFromCart } = useContext(CartContext);
 
   const handleQuantityChange = (id, change) => {
     const item = cartItems.find((item) => item.id === id);
@@ -33,6 +34,7 @@ function Cart() {
               <th>Product</th>
               <th>Quantity</th>
               <th>Total Price</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -58,11 +60,21 @@ function Cart() {
                 <td style={{ padding: '10px' }}>
                   ₹{item.price * item.quantity}
                 </td>
+
+                {/* Remove Button */}
+                <td style={{ padding: '10px' }}>
+                  <Button variant="danger" onClick={() => removeFromCart(item.id)}>Remove</Button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
+
+      <br />
+      <br />
+      <br />
+      <Footer/>
     </div>
   );
 }

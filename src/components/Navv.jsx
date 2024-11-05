@@ -1,20 +1,24 @@
-import React from 'react';
-import { Navbar, Nav, Container, Form, FormControl, Button } from 'react-bootstrap';
+// Navv.js
+import React, { useContext } from 'react';
+import { Navbar, Nav, Container, Form, FormControl, Button, Badge } from 'react-bootstrap';
 import { FaUser, FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import logo from './logo.webp';
+import logo from './../assets/Logo.webp';
+import { CartContext } from './../Context/CartContext';
 
 function Navv() {
+  const { cartCount } = useContext(CartContext);
+
   return (
     <Navbar
       bg="dark"
       variant="dark"
       expand="lg"
       style={{
-        position: 'fixed',  // Makes the navbar fixed to the top
+        position: 'fixed',
         top: 0,
-        width: '100%',      // Ensures it spans the entire width
-        zIndex: 1000,       // Keeps it above other components
+        width: '100%',
+        zIndex: 1000,
       }}
     >
       <Container>
@@ -54,7 +58,13 @@ function Navv() {
               <FaUser style={{ marginRight: '5px' }} /> Account
             </Nav.Link>
             <Nav.Link as={Link} to="/Cart" className="d-flex align-items-center">
-              <FaShoppingCart style={{ marginRight: '5px' }} /> Cart
+              <FaShoppingCart style={{ marginRight: '5px' }} />
+              Cart
+              {cartCount > 0 && (
+                <Badge bg="danger" pill style={{ marginLeft: '5px' }}>
+                  {cartCount}
+                </Badge>
+              )}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

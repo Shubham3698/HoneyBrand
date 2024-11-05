@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import kasutamcow from './kasutamcow.webp'; // Replace with your honey image path
+import kasutamcow from './../assets/kasutamcow.webp'; // Replace with your honey image path
 import { Link } from 'react-router-dom';
 
 

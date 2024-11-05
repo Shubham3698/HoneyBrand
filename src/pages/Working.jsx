@@ -18,6 +18,7 @@ function WorkInProgress() {
         </Col>
       </Row>
     </Container>
+    
     </div>
   );
 }

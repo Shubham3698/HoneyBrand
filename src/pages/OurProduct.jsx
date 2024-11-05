@@ -1,6 +1,7 @@
 import React from 'react'
 import Navv from '../components/Navv'
 import ProductCard from '../components/ProductCard'
+import Footer from '../components/Footer'
 
 function OurProduct() {
   return (
@@ -11,6 +12,15 @@ function OurProduct() {
       <br />
       <br />
       <ProductCard/>
+      <ProductCard/>
+      <ProductCard/>
+      <ProductCard/>
+      <ProductCard/>
+      <br />
+      <br />
+      <hr />
+      <br />
+      <Footer/>
     </div>
   )
 }

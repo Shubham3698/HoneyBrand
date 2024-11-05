@@ -1,6 +1,6 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-import firstt from './firstt.jpg'
+import firstt from './../assets/firstt.jpg'
 function HeroCarousel() {
   return (
     <div className="container-fluid p-0">
