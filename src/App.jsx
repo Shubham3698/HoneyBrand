@@ -9,6 +9,7 @@ import WorkInProgress from './pages/Working';
 import Cart from './pages/Cart';
 import Contact from './pages/Contact';
 import Account from './pages/Account';
+import ProductDetails from './pages/ProductDetails';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
           <Route path="/Track-order" element={<WorkInProgress />} />
           <Route path="/Account" element={<Account/>} />
           <Route path="/Cart" element={<Cart />} /> {/* Route for the Cart page */}
+          <Route path="/product-details" element={<ProductDetails/>} />
+
         </Routes>
       </Router>
     </CartProvider>

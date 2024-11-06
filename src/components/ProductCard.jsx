@@ -2,12 +2,13 @@
 import React, { useContext } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { FaStar } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import { CartContext } from './../Context/CartContext';
-
 import leg from './../assets/leg.gif';
 
 function ProductCard() {
   const { addToCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const product = {
     name: 'Product Name',
@@ -16,13 +17,18 @@ function ProductCard() {
     image: leg,
   };
 
+  const handleImageClick = () => {
+    navigate('/product-details', { state: { product } });
+  };
+
   return (
     <Card style={{ width: '18rem', margin: '1rem' }}>
       <Card.Img
         variant="top"
         src={product.image}
         alt="Product Image"
-        style={{ height: '200px', objectFit: 'cover' }}
+        style={{ height: '200px', objectFit: 'cover', cursor: 'pointer' }}
+        onClick={handleImageClick}
       />
       <Card.Body>
         <Card.Title>{product.name}</Card.Title>

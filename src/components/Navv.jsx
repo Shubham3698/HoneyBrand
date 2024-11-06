@@ -76,23 +76,23 @@ function Navv() {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="me-auto">
-              <br />
-              <br />
+              
+              
               <hr />
               <Nav.Link onClick={() => handleMenuClick("/")}>Home</Nav.Link>
-              <br />
+              
               <hr />
               <Nav.Link onClick={() => handleMenuClick("/Our-Products")}>Our products</Nav.Link>
-              <br />
+              
               <hr />
               <Nav.Link onClick={() => handleMenuClick("/Our-Story")}>Our story</Nav.Link>
-              <br />
+          
               <hr />
               <Nav.Link onClick={() => handleMenuClick("/Contact")}>Contact</Nav.Link>
-              <br />
+      
               <hr />
               <Nav.Link onClick={() => handleMenuClick("/Track-order")}>Track order</Nav.Link>
-              <br />
+            
               <hr />
             </Nav>
           </Offcanvas.Body>
