@@ -1,0 +1,18 @@
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.product-grid > * {
+  flex: 1 1 45%; /* Two cards per row on larger screens */
+  max-width: 45%;
+}
+
+@media (max-width: 768px) {
+  .product-grid > * {
+    flex: 1 1 100%; /* One card per row on smaller screens */
+    max-width: 100%;
+  }
+}
